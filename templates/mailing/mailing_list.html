@@ -24,7 +24,11 @@
             <td>{{ mailing.end_datetime }}</td>
             <td>{{ mailing.message.subject }}</td>
             <td>
-                <a href="{% url 'send_mailing' mailing.id %}" class="btn btn-sm btn-primary">Отправить</a>
+                <form action="{% url 'send_mailing' mailing.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Отправить рассылку</button>
+                </form>
+
                 <a href="{% url 'mailing_update' mailing.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
                 <a href="{% url 'mailing_delete' mailing.pk %}" class="btn btn-sm btn-danger">Удалить</a>
             </td>
