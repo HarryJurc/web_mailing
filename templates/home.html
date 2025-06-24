@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-2xl font-bold mb-4">Статистика рассылок</h1>
+    <ul class="list-disc ml-6 text-lg">
+        <li>Общее количество рассылок: <strong>{{ total_mailings }}</strong></li>
+        <li>Активных рассылок (запущено): <strong>{{ active_mailings }}</strong></li>
+        <li>Уникальных получателей: <strong>{{ unique_recipients }}</strong></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'mailing/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Клиенты{% endblock %}
 
@@ -26,6 +26,8 @@
                 <a href="{% url 'client_delete' client.pk %}" class="btn btn-sm btn-danger">Удалить</a>
             </td>
         </tr>
+        {% empty %}
+        <tr><td colspan="4">Клиентов нет</td></tr>
         {% endfor %}
     </tbody>
 </table>
