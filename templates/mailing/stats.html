@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика рассылок{% endblock %}
+
+{% block content %}
+<h1>Статистика рассылок</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID рассылки</th>
+      <th>Статус</th>
+      <th>Начало</th>
+      <th>Окончание</th>
+      <th>Успешные попытки</th>
+      <th>Неуспешные попытки</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for mailing in stats %}
+    <tr>
+      <td>{{ mailing.id }}</td>
+      <td>{{ mailing.status }}</td>
+      <td>{{ mailing.start_datetime }}</td>
+      <td>{{ mailing.end_datetime }}</td>
+      <td>{{ mailing.success_count }}</td>
+      <td>{{ mailing.fail_count }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6">Нет данных</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<hr>
+
+<p>Всего успешно отправлено сообщений: {{ total_messages_sent }}</p>
+<p>Всего неуспешных попыток: {{ total_fail }}</p>
+
+{% endblock %}
